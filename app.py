@@ -45,7 +45,8 @@ def delete(post_id):
         json.dump(blog_posts, file)
     return redirect(url_for('index'))
 
-# alternative to delete
+
+# an alternative to delete
 # @app.route('/delete/<int:post_id>')
 # def delete(post_id):
 #     global blog_posts
