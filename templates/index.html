@@ -1,38 +1,19 @@
-<html>
-    <head>
-        <title>{{ title }}</title>
-    </head>
-    <body>
-        <h1>Welcome {{ title }}, {{ user }}!</h1>
-        <h1>The time now is: {{ time }}.</h1>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>User</th>
-                    <th>Age</th>
-                    <th>Country</th>
-                    <th>Special Message</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user, details in users.items() %}
-                    <tr>
-                        <td>{{ user }}</td>
-                        <td>{{ details['age'] }}</td>
-                        <td>{{ details['country'] }}</td>
-                        <td>
-                            {% if details['country'] == 'USA' %}
-                                Special message for USA users: Welcome!
-                            {% endif %}
-                            {% if user == 'Alice' %}
-                                Alice, here's a special message just for you! Welcome back
-                            {% elif user == 'Bob' %}
-                                Bob, did you know you're our user of the month?
-                            {% endif %}
-                        </td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog Posts</title>
+</head>
+<body>
+    <h1>Blog Posts</h1>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p><strong>Author:</strong> {{ post.author }}</p>
+                <p>{{ post.content }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
 </html>
