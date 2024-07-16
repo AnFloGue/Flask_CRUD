@@ -2,23 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Blog Posts</title>
 </head>
 <body>
     <h1>Blog Posts</h1>
-    <a href="{{ url_for('add') }}">Add a New Post</a>
     <ul>
         {% for post in posts %}
-        <li>
-            <h2>{{ post.id }}: {{ post.title }}</h2>
-            <p>by {{ post.author }}</p>
-            <p>{{ post.content }}</p>
-            <a href="{{ url_for('delete', post_id=post.id) }}">Delete</a>
-            <a href="{{ url_for('update', post_id=post.id) }}">Update</a>
-        </li>
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                <p>Author: {{ post.author }}</p>
+                <p>Likes: {{ post.likes }}</p>
+                <a href="{{ url_for('delete', post_id=post.id) }}">Delete</a>
+                <a href="{{ url_for('update', post_id=post.id) }}">Update</a>
+                <form action="{{ url_for('like', post_id=post.id) }}" method="post">
+                    <button type="submit">Like</button>
+                </form>
+                <form action="{{ url_for('dislike', post_id=post.id) }}" method="post">
+                    <button type="submit">Dislike</button>
+                </form>
+            </li>
         {% endfor %}
     </ul>
+    <a href="{{ url_for('add') }}">Add New Post</a>
 </body>
 </html>
