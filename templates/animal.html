@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <title>{{ animal_data['Name'] }}</title>
+    </head>
+    <body>
+        <li class="cards__item">
+            {% for item, value in animal_data.items() %}
+                <p class = 'card__text'>
+                <strong>{{ item }}:</strong> {{ value }}
+                </p>
+            {% endfor %}
+        </li>
+    </body>
+</html>
